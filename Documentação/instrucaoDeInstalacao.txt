@@ -1,0 +1,49 @@
+Instruções de Instalação
+
+1. Descompactar o Arquivo
+Descompacte o arquivo .zip na pasta htdocs, que fica dentro da pasta XAMPP.
+Importante: O arquivo PHP só funcionará corretamente se for colocado dentro da pasta htdocs.
+Caso coloque em outra pasta, o código não funcionará.
+
+2. Importar o Banco de Dados
+Abra o phpMyAdmin clicando em Admin no painel de controle do XAMPP, no módulo MySQL.
+No phpMyAdmin, clique em Importar e selecione o arquivo cursos.sql que está no projeto.
+Clique em Executar para importar o banco de dados para o MySQL.
+
+3. Configuração da Conexão com o Banco de Dados
+Antes de iniciar o sistema, é necessário configurar a conexão com o banco de dados. Siga os passos abaixo para garantir que as credenciais estejam corretas:
+
+Abra o arquivo dataBase.php que se encontra na pasta config do projeto.
+
+Atualize as credenciais:
+$hostname: Endereço do servidor (geralmente 'localhost').
+$bancoDados: Nome do banco de dados.
+$usuario: Seu nome de usuário do banco.
+$senha: Sua senha do banco.
+Salve o arquivo de configuração.
+Teste a conexão acessando o sistema.
+
+4. Iniciar o XAMPP
+Abra o painel de controle do XAMPP e clique em Start no módulo Apache.
+Clique em Start no módulo MySQL.
+Dica: Quando ambos os módulos (Apache e MySQL) estiverem iniciados, a cor deles mudará para verde.
+
+5. Acessar a API
+Esta API pode ser acessada pelo navegador apenas para requisições GET. Outros métodos
+(POST, PUT, DELETE) não funcionarão diretamente pelo navegador e exigem login e senha.
+Para testar todas as requisições corretamente, utilize o Postman ou Insomnia, ambos gratuitos.
+Abra o Postman ou Insomnia e insira a URL da API:
+http://localhost:8080/apiCursos/controller/Aluno/ApiConsultarAlunos.php
+Para utilizar todos os métodos da Api siga os passos da documentação que está na pasta zipada, insira as credenciais de login e senha conforme necessário.
+
+LOGIN: karol
+SENHA: 123
+
+6. Verificar o Funcionamento
+Certifique-se de que a API está funcionando corretamente enviando requisições e acessando os endpoints disponíveis.
+Se houver problemas, verifique se o servidor e o banco de dados estão ativos.
+
+7. Configuração da Porta do Servidor
+A porta do servidor nesta API foi configurada como 8080 porque, durante o desenvolvimento, a porta padrão 80 já estava em uso.
+Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor. Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro ambiente.
+

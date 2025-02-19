@@ -1,0 +1,401 @@
+OBJETIVO GERAL
+API para facilitar o gerenciamento de alunos, cursos e matrículas, permitindo cadastrar,
+consultar, atualizar e excluir informações, além de garantir que um aluno não se matricule
+duas vezes no mesmo curso.
+Para o consumo de todos os serviços da API é necessário autenticação Basic Auth
+conforme abaixo:
+Login: karol
+Senha: 123
+SERVIÇOS A OFERECER
+1. Consulta de alunos.
+2. Consulta de cursos.
+3. Consulta de matrículas.
+4. Gravar alunos.
+5. Gravar cursos.
+6. Gravar matrículas.
+7. Atualização de alunos.
+8. Atualização de cursos.
+9. Atualização de matrículas.
+10. Exclusão de alunos.
+11. Exclusão de cursos.
+12. Exclusão de matrículas.
+1. Consulta de alunos
+Objetivo
+Esta API tem como objetivo consultar os alunos.
+Visão do solicitante
+Descrição: Buscar informações
+Canal de acesso para lista de alunos:
+http://localhost:8080/apiCursos/controller/Aluno/ApiConsultarAlunos.php
+Canal de acesso para aluno específico:
+http://localhost:8080/apiCursos/controller/Aluno/ApiConsultarAlunos.php?idAluno=1
+Canal de acesso para aluno e curso específico:
+http://localhost:8080/apiCursos/controller/Aluno/ApiConsultarAlunos.php?idAluno=1&idCur
+so=2
+Tipo de requisição: GET
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+DETALHAMENTO DE ENTRADA
+idAluno: int.
+detalhamento: esta API foi desenvolvida para fornecer uma maneira prática de buscar
+informações sobre os alunos. Quando o número do ID é incluído no parâmetro idAluno, a
+API retorna os dados de um aluno específico.
+idAluno obrigatório: Não;
+idCurso: int.
+detalhamento: Quando o número do ID é incluído no parâmetro idCurso, a API retorna os
+dados de um aluno e curso específico.
+idCurso obrigatório: Não;
+RESULTADO JSON DE SAÍDA COM PARÂMETRO (IdAluno)
+[
+{
+"id": 1,
+"nome": "Karoline",
+"email": "karol071298@gmail.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "2025-02-18",
+"curso": "Inglês"
+},
+{
+"id": 1,
+"nome": "Karoline",
+"email": "karol071298@gmail.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "2025-02-18",
+"curso": "Espanhol"
+}
+]
+RESULTADO JSON DE SAÍDA COM PARÂMETRO (IdAluno e idCurso)
+[
+{
+"id": 1,
+"nome": "Karoline",
+"email": "karol071298@gmail.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "2025-02-18",
+"curso": "Espanhol"
+}
+]
+RESULTADO JSON DE SAÍDA SEM PARÂMETROS
+[
+{
+"id": 1,
+"nome": "Karoline",
+"email": "karol@email.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+},
+{
+"id": 2,
+"nome": "Anderson",
+"email": "anderson@email.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+},
+{
+"id": 3,
+"nome": "Joana",
+"email": "joana@email.com",
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+}
+]
+2. Consulta de Cursos
+Objetivo
+Esta API tem como objetivo consultar os cursos.
+Visão do solicitante
+Descrição: Buscar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Curso/ApiConsultarCursos.php
+Canal de acesso para curso específico:
+http://localhost:8080/apiCursos/controller/Curso/ApiConsultarCursos.php?idCurso=2
+Tipo de requisição: GET
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+DETALHAMENTO DE ENTRADA
+idCurso: int
+detalhamento:esta API foi desenvolvida para fornecer uma maneira prática de buscar
+informações sobre os cursos. Quando o número do ID é incluído no parâmetro idCurso, a
+API retorna os dados de um curso específico.
+idCurso obrigatório: Não.
+RESULTADO JSON DE SAÍDA COM PARÂMETRO (IdCurso)
+[
+{
+"id": 2,
+"nome": "Espanhol",
+"descricao": "Curso de espanhol",
+"duracao": 12,
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+}
+]
+RESULTADO JSON DE SAÍDA SEM PARÂMETRO
+[
+{
+"id": 1,
+"nome": "Inglês",
+"descricao": "Curso de inglês",
+"duracao": 12,
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+},
+{
+"id": 2,
+"nome": "Espanhol",
+"descricao": "Curso de espanhol",
+"duracao": 12,
+"data_criacao": "2025-02-16",
+"data_atualizacao": "0000-00-00"
+},
+{
+"id": 5,
+"nome": "Francês",
+"descricao": "Curso de francês",
+"duracao": 12,
+"data_criacao": "2025-02-17",
+"data_atualizacao": "0000-00-00"
+}
+]
+3. Consulta de Matrículas
+Objetivo
+Esta API tem como objetivo consultar onde os alunos estão matriculados.
+Visão do solicitante
+Descrição: Buscar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Matricula/ApiConsultarMatriculas.php
+Canal de acesso para matrícula específica:
+http://localhost:8080/apiCursos/controller/Matricula/ApiConsultarMatriculas.php?id=1
+Tipo de requisição: GET
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+DETALHAMENTO DE ENTRADA
+id: int
+detalhamento:esta API foi desenvolvida para fornecer uma maneira prática de buscar
+informações sobre matrículas. Quando o número do ID é incluído no parâmetro id, a API
+retorna os dados de uma matrícula específica.
+id obrigatório: Não.
+RESULTADO JSON DE SAÍDA COM PARÂMETRO
+[
+{
+"id": 1,
+"id_aluno": 2,
+"id_curso": 1,
+"data_matricula": "2025-02-16"
+}
+]
+RESULTADO JSON DE SAÍDA SEM PARÂMETRO
+[
+{
+"id": 1,
+"id_aluno": 2,
+"id_curso": 1,
+"data_matricula": "2025-02-16"
+},
+{
+"id": 2,
+"id_aluno": 2,
+"id_curso": 2,
+"data_matricula": "2025-02-16"
+},
+{
+"id": 3,
+"id_aluno": 1,
+"id_curso": 1,
+"data_matricula": "2025-02-16"
+}
+]
+4. Gravar alunos.
+Objetivo
+Esta API tem como objetivo cadastrar os alunos.
+Visão do solicitante
+Descrição: Gravar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Aluno/ApiGravarAluno.php
+Tipo de requisição: POST
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"nome": "teste",
+"email": "teste@gmail.com"
+}
+5. Gravar Curso
+Objetivo
+Esta API tem como objetivo cadastrar os cursos.
+Visão do solicitante
+Descrição: Gravar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Curso/ApiGravarCurso.php
+Tipo de requisição: POST
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"nome": "Mandarim",
+"descricao": "Curso Mandarim",
+"duracao": "40"
+}
+6. Gravar Matrícula
+Objetivo
+Esta API tem como objetivo cadastrar as matrículas dos alunos, se o aluno já estiver
+matriculado em um curso, não deixa seguir.
+Cadastrando o aluno no curso que já está matriculado.
+{
+"error": "Esse aluno ja esta matriculado nesse curso"
+}
+Visão do solicitante
+Descrição: Gravar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Matricula/ApiGravarMatricula.php
+Tipo de requisição: POST
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id_aluno": "1",
+"id_curso": "5"
+}
+7. Atualização de aluno.
+Objetivo
+Esta API tem como objetivo atualizar os alunos.
+Visão do solicitante
+Descrição: Atualizar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Aluno/ApiAtualizarAluno.php
+Tipo de requisição: PUT
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 1,
+"nome": "Karoline",
+"email": "karol071298@gmail.com"
+}
+8. Atualização de curso.
+Objetivo
+Esta API tem como objetivo atualizar os cursos.
+Visão do solicitante
+Descrição: Atualizar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Curso/ApiAtualizarCurso.php
+Tipo de requisição: PUT
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 6,
+"nome": "Mandarim",
+"descricao": "Curso de Mandarim",
+"duracao": "42"
+}
+9. Atualização de matrícula.
+Objetivo
+Esta API tem como objetivo atualizar a matrícula dos alunos.
+Visão do solicitante
+Descrição: Atualizar informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Matricula/ApiAtualizarMatricula.php
+Tipo de requisição: PUT
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 1,
+"id_aluno": "2",
+"id_curso": "6"
+}
+10. Exclusão de aluno
+Objetivo
+Esta API tem como objetivo excluir os alunos, a exclusão é permanente.
+Visão do solicitante
+Descrição: Excluir informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Aluno/ApiExcluirAluno.php
+Tipo de requisição: DELETE
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 4,
+"nome": "teste",
+"email": "teste@gmail.com"
+}
+11. Exclusão de curso
+Objetivo
+Esta API tem como objetivo excluir os cursos, a exclusão é permanente.
+Visão do solicitante
+Descrição: Excluir informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Curso/ApiExcluirCurso.php
+Tipo de requisição: DELETE
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 7,
+"nome": "Curso",
+"descricao": "Descricao do curso",
+"duracao": 60
+}
+12. Exclusão de matrícula
+Objetivo
+Esta API tem como objetivo excluir a matrícula dos alunos, a exclusão é permanente.
+Visão do solicitante
+Descrição: Excluir informações
+Canal de acesso:
+http://localhost:8080/apiCursos/controller/Matricula/ApiExcluirMatricula.php
+Tipo de requisição: DELETE
+Acessar a API
+● A porta do servidor nesta API foi configurada como 8080 porque, durante o
+desenvolvimento, a porta padrão 80 já estava em uso.
+● Essa porta 8080 não é obrigatória e pode variar de acordo com o servidor.
+Certifique-se de verificar e ajustar a porta se necessário, ao utilizar a API em outro
+ambiente.
+RESULTADO JSON DE ENTRADA
+{
+"id": 4,
+"id_aluno": "1",
+"id_curso": "5"
+}
